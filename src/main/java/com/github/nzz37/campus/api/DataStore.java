@@ -8,10 +8,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DataStore {
-    // These static maps act as our database tables
     private static Map<String, Room> rooms = new HashMap<>();
+    // Add the sensors map:
+    private static Map<String, Sensor> sensors = new HashMap<>();
     
     public static Map<String, Room> getRooms() {
         return rooms;
+    }
+    
+    // Add the getter for sensors:
+    public static Map<String, Sensor> getSensors() {
+        return sensors;
     }
 }

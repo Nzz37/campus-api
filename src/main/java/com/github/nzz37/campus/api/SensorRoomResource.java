@@ -55,4 +55,30 @@ public class SensorRoomResource {
         
         return Response.ok(room).build();
     }
+    
+    // 4. DELETE /{roomId}: Allow room decommissioning safely
+    @DELETE
+    @Path("/{roomId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteRoom(@PathParam("roomId") String roomId) {
+        Room room = DataStore.getRooms().get(roomId);
+        
+        // Check if the room exists
+        if (room == null) {
+            return Response.status(Response.Status.NOT_FOUND)
+                           .entity("{\"error\":\"Room not found\"}")
+                           .build();
+        }
+        
+        // Safety Logic: Prevent deletion if sensors are still active
+        if (!room.getSensorIds().isEmpty()) {
+            throw new RoomNotEmptyException("Cannot delete room. It is currently occupied by active hardware.");
+        }
+        
+        // If safe, delete the room
+        DataStore.getRooms().remove(roomId);
+        
+        // Return 204 No Content on successful deletion
+        return Response.noContent().build();
+    }
 }
