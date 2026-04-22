@@ -8,13 +8,12 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
-@Provider
+@Provider // This automatically registers the mapper with GlassFish
 public class LinkedResourceNotFoundExceptionMapper implements ExceptionMapper<LinkedResourceNotFoundException> {
-
+    
     @Override
     public Response toResponse(LinkedResourceNotFoundException exception) {
-        // Returns HTTP 422 Unprocessable Entity as required by Part 5.2
-        return Response.status(422) 
+        return Response.status(422) // 422 Unprocessable Entity
                        .entity("{\"error\": \"" + exception.getMessage() + "\"}")
                        .type("application/json")
                        .build();
