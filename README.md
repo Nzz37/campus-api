@@ -58,9 +58,9 @@ Hit **Enter**. You should see a `200 OK` status showing only Temperature sensors
 
 ## Test 5: Delete the Room (Safety Test)
 Create a final request to test the cascade cleanup/error handling:
-
+'''
 curl -i -X DELETE http://localhost:8080/campus-api/api/v1/rooms/R101
-```
+'''
 Hit **Enter**. You should see a `409 Conflict` status because the room still contains an active sensor.
 
 
