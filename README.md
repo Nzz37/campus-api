@@ -1,7 +1,7 @@
 # 5COSC022W Client-Server Architectures – REST API Coursework
 
 ## 1. Overview of API Design
-This Java EE 8 RESTful API uses JAX-RS to manage campus rooms and IoT hardware. It follows standard REST principles by using standard HTTP methods (GET, POST, PUT, DELETE) for all CRUD operations and plural URIs (`/rooms`, `/sensors`) for its endpoints. All data is handled in JSON format. To meet the coursework's strict no-database requirement, the application stores data entirely in-memory using Java `HashMap` structures.
+This Java EE 8 RESTful API uses JAX-RS to manage campus rooms and IoT hardware. It follows standard REST principles by using standard HTTP methods (GET, POST, PUT, DELETE) for all CRUD operations and URIs (`/rooms`, `/sensors`) for its endpoints. All data is handled in JSON format. To meet the no-database requirement, the application stores data entirely in-memory using Java `HashMap` structures.
 
 
 
@@ -21,60 +21,68 @@ This Java EE 8 RESTful API uses JAX-RS to manage campus rooms and IoT hardware. 
 
 
 ## Test 1: Create a Room (Data Initialisation)
-Open **Postman** and create a new request:
+Open **Command Prompt** or **Command Terminal** and run the following request:
 - **Method:** `POST`
 - **URL:** `http://localhost:8080/campus-api/api/v1/rooms`
 
-Go to the **Body** tab, select **raw** and **JSON**, then paste:
+Copy and paste the following **cURL** command:
 
-{
-  "id": "R101",
-  "name": "Computer Lab"
-}
+curl -i -X POST http://localhost:8080/campus-api/api/v1/rooms -H "Content-Type: application/json" -d "{\"id\":\"R101\", \"name\":\"Computer Lab\"}"
 
-Click **Send**. You should see a `201 Created` status.
+Hit **Enter**. You should see a `201 Created` status and the newly created JSON object in the response.
 
+---
 
 ## Test 2: Add a Sensor (Dependency Validation)
-Create a new request in Postman:
+Create a new request in your terminal to add a sensor:
 - **Method:** `POST`
 - **URL:** `http://localhost:8080/campus-api/api/v1/sensors`
 
-In the **Body** tab (raw JSON), paste:
+Copy and paste the following **cURL** command:
 
-{
-  "id": "S1",
-  "type": "Temperature",
-  "status": "ACTIVE",
-  "currentValue": 22.5,
-  "roomId": "R101"
-}
-Click **Send**. You should see a `201 Created` status.
+curl -i -X POST http://localhost:8080/campus-api/api/v1/sensors -H "Content-Type: application/json" -d "{\"id\":\"S1\", \"type\":\"Temperature\", \"status\":\"ACTIVE\", \"currentValue\":22.5, \"roomId\":\"R101\"}"
 
+Hit **Enter**. You should see a `201 Created` status.
 
+---
 
 ## Test 3: Retrieve Sub-resource
 Create a new request to get all sensors assigned to Room R101:
 - **Method:** `GET`
 - **URL:** `http://localhost:8080/campus-api/api/v1/rooms/R101/sensors`
 
-Click **Send**. You should see a `200 OK` status and the sensor data in the response.
+Copy and paste the following **cURL** command:
 
+curl -i -X GET http://localhost:8080/campus-api/api/v1/rooms/R101/sensors
+
+Hit **Enter**. You should see a `200 OK` status and the sensor data in the response.
+
+---
 
 ## Test 4: Filter by Type
 Create a new request to test the advanced search query parameters:
 - **Method:** `GET`
 - **URL:** `http://localhost:8080/campus-api/api/v1/sensors?type=Temperature`
 
-Click **Send**. You should see a `200 OK` status showing only Temperature sensors.
+Copy and paste the following **cURL** command:
 
+curl -i -X GET "http://localhost:8080/campus-api/api/v1/sensors?type=Temperature"
+
+Hit **Enter**. You should see a `200 OK` status showing only Temperature sensors.
+
+---
 
 ## Test 5: Delete the Room (Safety Test)
 Create a final request to test the cascade cleanup/error handling:
-**Method:** `DELETE`
-**URL:** `http://localhost:8080/campus-api/api/v1/rooms/R101`
+- **Method:** `DELETE`
+- **URL:** `http://localhost:8080/campus-api/api/v1/rooms/R101`
 
-Click **Send**. You should see a `409 Conflict` status because the room still contains an active sensor.
+Copy and paste the following **cURL** command:
+
+curl -i -X DELETE http://localhost:8080/campus-api/api/v1/rooms/R101
+```
+Hit **Enter**. You should see a `409 Conflict` status because the room still contains an active sensor.
+
 
 
 ## Important Notes
