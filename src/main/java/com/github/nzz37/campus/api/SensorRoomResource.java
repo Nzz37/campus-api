@@ -105,4 +105,13 @@ public class SensorRoomResource {
         }
         return Response.ok(roomSensors).build();
     }
+    
+    @GET
+    @Path("/crash")
+    public Response testGlobalError() {
+        String fakeData = null;
+        fakeData.length(); 
+    
+        return Response.ok().build();
+}
 }
