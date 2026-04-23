@@ -4,6 +4,10 @@
 This Java EE 8 RESTful API uses JAX-RS to manage campus rooms and IoT hardware. It follows standard REST principles by using standard HTTP methods (GET, POST, PUT, DELETE) for all CRUD operations and URIs (`/rooms`, `/sensors`) for its endpoints. All data is handled in JSON format. To meet the no-database requirement, the application stores data entirely in-memory using Java `HashMap` structures.
 
 
+## Prerequisites
+- JDK 1.8 : for javax libraries
+- Glassfish 5.1.0 server
+
 
 ## Step 1 – Configure Apache NetBeans
 1. Open the project folder in Apache NetBeans
