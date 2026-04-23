@@ -8,15 +8,13 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
-@Provider // This annotation is crucial; it tells the server to use this mapper automatically
-public class RoomNotEmptyExceptionMapper implements ExceptionMapper<RoomNotEmptyException> {
-
+@Provider 
+public class GlobalExceptionMapper implements ExceptionMapper<Throwable> {
     @Override
-    public Response toResponse(RoomNotEmptyException exception) {
-        String jsonError = "{\"error\": \"" + exception.getMessage() + "\"}";
-        
-        return Response.status(Response.Status.CONFLICT)
-                       .entity(jsonError)
+    public Response toResponse(Throwable exception) {
+        exception.printStackTrace(); 
+        return Response.status(Response.Status.INTERNAL_SERVER_ERROR) // HTTP 500
+                       .entity("{\"error\": \"Internal Server Error\", \"message\": \"An unexpected error occurred.\"}")
                        .type("application/json")
                        .build();
     }

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.github.nzz37.campusapi;
+package com.github.nzz37.campus.api;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -109,4 +109,9 @@ public class SensorResource {
         
         return Response.noContent().build(); // Success 204
     }
+    
+    @Path("/{sensorId}/readings")
+    public SensorReadingResource getReadingResource(@PathParam("sensorId") String sensorId) {
+        return new SensorReadingResource(sensorId);
+}
 }

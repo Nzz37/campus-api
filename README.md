@@ -18,7 +18,7 @@ This Java EE 8 RESTful API uses JAX-RS to manage campus rooms and IoT hardware. 
 3. Right-click the project and select **Run**
 4. Wait for the server logs to state the project has successfully deployed to the **GlassFish 5.1.0** server
 
-
+---
 
 ## Test 1: Create a Room (Data Initialisation)
 Open **Command Prompt** or **Command Terminal** and run the following cURL to create a Room:

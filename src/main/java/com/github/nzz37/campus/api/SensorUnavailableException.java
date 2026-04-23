@@ -4,10 +4,9 @@
  */
 package com.github.nzz37.campus.api;
 
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
 
-@ApplicationPath("/api/v1")
-public class SmartCampusApplication extends Application {
-    // This tells the server exactly where the API begins
+public class SensorUnavailableException extends RuntimeException {
+    public SensorUnavailableException(String message) {
+        super(message);
+    }
 }

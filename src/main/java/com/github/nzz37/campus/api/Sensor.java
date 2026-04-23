@@ -1,4 +1,4 @@
-package com.github.nzz37.campusapi;
+package com.github.nzz37.campus.api;
 
 public class Sensor {
     private String id;
