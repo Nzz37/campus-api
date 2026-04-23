@@ -13,6 +13,8 @@ This Java EE 8 RESTful API uses JAX-RS to manage campus rooms and IoT hardware. 
 1. Open the project folder in Apache NetBeans
 2. Right-click the project in the **Projects** window and select **Properties**
 3. Ensure the Java Platform is set to **JDK 1.8**
+4. Go to **Services** and right click **Servers**
+5. Add GlassFish server then select **version 5.1.0**
 
 
 
