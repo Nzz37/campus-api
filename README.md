@@ -22,36 +22,36 @@ This Java EE 8 RESTful API uses JAX-RS to manage campus rooms and IoT hardware. 
 
 ## Test 1: Create a Room (Data Initialisation)
 Open **Command Prompt** or **Command Terminal** and run the following cURL to create a Room:
-
+```
 curl -i -X POST http://localhost:8080/campus-api/api/v1/rooms -H "Content-Type: application/json" -d "{\"id\":\"R101\", \"name\":\"Computer Lab\"}"
-
+```
 Hit **Enter**. You should see a `201 Created` status and the newly created JSON object in the response.
 
 ---
 
 ## Test 2: Add a Sensor (Dependency Validation)
 Create a new request in your terminal to add a sensor:
-
+```
 curl -i -X POST http://localhost:8080/campus-api/api/v1/sensors -H "Content-Type: application/json" -d "{\"id\":\"S1\", \"type\":\"Temperature\", \"status\":\"ACTIVE\", \"currentValue\":22.5, \"roomId\":\"R101\"}"
-
+```
 Hit **Enter**. You should see a `201 Created` status.
 
 ---
 
 ## Test 3: Retrieve Sub-resource
 Create a new request to get all sensors assigned to Room R101:
-
+```
 curl -i -X GET http://localhost:8080/campus-api/api/v1/rooms/R101/sensors
-
+```
 Hit **Enter**. You should see a `200 OK` status and the sensor data in the response.
 
 ---
 
 ## Test 4: Filter by Type
 Create a new request to test the advanced search query parameters:
-
+```
 curl -i -X GET "http://localhost:8080/campus-api/api/v1/sensors?type=Temperature"
-
+```
 Hit **Enter**. You should see a `200 OK` status showing only Temperature sensors.
 
 ---
@@ -70,6 +70,7 @@ Hit **Enter**. You should see a `409 Conflict` status because the room still con
 - You **must** execute Test 3 (Create a Room) before Test 4, or the dependency validation will fail.
 - All data transmitted and consumed exclusively in JSON format.
 
+---
 
 ## Coursework Report Answers
 
