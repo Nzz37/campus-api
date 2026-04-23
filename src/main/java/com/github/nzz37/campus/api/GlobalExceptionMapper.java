@@ -13,7 +13,7 @@ public class GlobalExceptionMapper implements ExceptionMapper<Throwable> {
     @Override
     public Response toResponse(Throwable exception) {
         exception.printStackTrace(); 
-        return Response.status(Response.Status.INTERNAL_SERVER_ERROR) // HTTP 500
+        return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                        .entity("{\"error\": \"Internal Server Error\", \"message\": \"An unexpected error occurred.\"}")
                        .type("application/json")
                        .build();

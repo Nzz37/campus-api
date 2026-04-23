@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class DataStore {
     private static Map<String, Room> rooms = new HashMap<>();
-    //add sensors map:
+    
     private static Map<String, Sensor> sensors = new HashMap<>();
     
     private static Map<String, java.util.List<Reading>> readings = new HashMap<>();
@@ -18,7 +18,7 @@ public class DataStore {
         return rooms;
     }
     
-    //getter for sensors:
+    
     public static Map<String, Sensor> getSensors() {
         return sensors;
     }

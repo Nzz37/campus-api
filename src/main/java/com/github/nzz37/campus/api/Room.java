@@ -13,7 +13,6 @@ public class Room {
     private int capacity;
     private List<String> sensorIds = new ArrayList<>();
 
-    // Empty constructor required for JSON parsing
     public Room() {}
 
     public Room(String id, String name, int capacity) {
@@ -22,7 +21,6 @@ public class Room {
         this.capacity = capacity;
     }
 
-    // Getters and Setters
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
 

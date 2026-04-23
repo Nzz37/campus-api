@@ -2,15 +2,14 @@ package com.github.nzz37.campus.api;
 
 public class Sensor {
     private String id;
-    private String type; // e.g., "Temperature", "CO2"
-    private String status; // e.g., "ACTIVE", "OFFLINE"
+    private String type; 
+    private String status; 
     private double currentValue;
     private String roomId;
 
-    // Empty constructor required by JAX-RS
     public Sensor() {}
 
-    // Getters and Setters
+    
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
 
