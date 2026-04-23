@@ -7,7 +7,7 @@ This Java EE 8 RESTful API uses JAX-RS to manage campus rooms and IoT hardware. 
 ## Prerequisites
 - JDK 1.8 : for javax libraries
 - Glassfish 5.1.0 server
-
+- NetBeans
 
 ## Step 1 – Configure Apache NetBeans
 1. Open the project folder in Apache NetBeans
