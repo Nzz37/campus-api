@@ -73,8 +73,8 @@ Hit **Enter**. You should see a `409 Conflict` status because the room still con
 
 ## Important Notes
 - The DataStore utilises an in-memory `HashMap` — all data resets upon server restart!
-- You **must** execute Test 3 (Create a Room) before Test 4, or the dependency validation will fail.
-- All data transmitted and consumed exclusively in JSON format.
+- You **must** execute curl command 1 (Create a Room) before curl command 2, or the dependency validation will fail.
+- All data transmitted exclusively in JSON format.
 
 ---
 
